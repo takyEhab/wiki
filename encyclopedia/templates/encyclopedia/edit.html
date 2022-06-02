@@ -4,7 +4,7 @@
     Edit Entry
 {% endblock %}
 
-{% block body %}
+{% comment %} {% block body %}
 
     <h1>Edit Entry "{{ title }}" </h1>
     <h6>Using Markdown</h6>
@@ -16,6 +16,43 @@
         <textarea name="entry" mins="10">{{entry}}</textarea>
         <br><br>
         <input type="submit" value="Save New Page">
+    </form>
+
+{% endblock %} {% endcomment %}
+
+
+{% block body %}
+<div style="justify-content: center; align-items: center; width: 100%">
+<div class="dark:text-gray-200">
+    <p style="font-size: 30px">Edit Entry "{{ title }}" </p>
+
+    <p style="font-size: 20px">Using Markdown</p>
+    <br />
+    <form action="{% url 'edit' title %}" method="post">
+        {% csrf_token %}
+
+       
+          <div class="mb-6">
+            <label
+              for="large-input"
+              class="block mb-4 text-2xl font-medium text-gray-1000 dark:text-gray-400"
+              >Entry Content</label
+            >
+            <textarea
+            name="content"
+            rows="8"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Write Content Here..."
+          >{{ entry }}
+  </textarea
+            >
+          </div>
+        <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
+      Save New Page
+    </button>
     </form>
 
 {% endblock %}

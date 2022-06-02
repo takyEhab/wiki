@@ -1,24 +1,39 @@
-{% extends "encyclopedia/layout.html" %}
+{% extends "encyclopedia/layout.html" %} {% block title %} Create New Entry {%
+endblock %} {% block body %}
+<div style="justify-content: center; align-items: center; width: 100%">
+  <div class="dark:text-gray-200">
+    <p style="font-size: 30px">Create New Entry</p>
 
-{% block title %}
-    Create New Entry
-{% endblock %}
-
-{% block body %}
-
-    <h1>Create New Entry</h1>
-    <h6>Using Markdown</h6>
-
+    <p style="font-size: 20px">Using Markdown</p>
+    <br />
     <form action="{% url 'newpage' %}" method="post">
-        {% csrf_token %}
-        <br><br>
-        <h5>Title entry</h5>
+      {% csrf_token %} {{ form.non_field_errors }}
+
+      <div class="mb-6">
+        <label
+          for="large-input"
+          class="block mb-4 text-2xl font-medium text-gray-1000 dark:text-gray-400"
+          >Entry Title</label
+        >
         {{ form.TitleEntry }}
-        <br><br>  
-        <h5>Entry</h5>
+      </div>
+      <div class="mb-6">
+        <label
+          for="large-input"
+          class="block mb-4 text-2xl font-medium text-gray-1000 dark:text-gray-400"
+          >Entry Content</label
+        >
         {{ form.Entry }}
-        <br><br>
-        <input type="submit" value="Save New Page">
+      </div>
+
+      <button
+        type="submit"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >
+        Save New Page
+      </button>
     </form>
 
-{% endblock %}
+    {% endblock %}
+  </div>
+</div>

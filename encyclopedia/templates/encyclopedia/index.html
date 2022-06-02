@@ -1,16 +1,36 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-    Encyclopedia
+    Home
 {% endblock %}
 
 {% block body %}
-    <h1>All Pages</h1>
+<h1 class="header">
+    Welcome to WIKI where you can find and create encyclopedias
+ 
+ 
+ </h1>
+ <h1 class="text-2xl dark:text-white">All Pages</h1>
 
-    <ul>
+ <div class="p-4 grid grid-cols-4 gap-3" >
         {% for entry in entries %}
-            <li><a href="{% url 'wiki' entry %}">{{ entry }}</a></li>
+            <a class="item no-underline bg-gray-500 hover:bg-gray-600 " href="{% url 'wiki' entry %}">{{ entry }}</a>
         {% endfor %}
-    </ul>
+    </div>
 
 {% endblock %}
+
+
+ {% comment %} <h1 class="header">
+    Welcome to WIKI where you can find and create encyclopedias
+ 
+ 
+ </h1>
+ <h1 class="text-2xl dark:text-white">All Pages</h1>
+ 
+ <div class="p-4 grid grid-cols-4 gap-3" >
+    <% for(let i=0; i<entries.length; i++) {%>
+       <a class="item no-underline bg-gray-500 hover:bg-gray-600 " href="wiki/<%= entries[i] %>" ><%= entries[i] %></a>
+    <% } %>
+  </div>
+  {% endcomment %}
